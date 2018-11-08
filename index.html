@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="text/html/charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+</head>
+
+<body>
+<canvas id="gameCanvas" width="800" height="600"></canvas>
+<script>
+var canvas, canvasContext;
+var framesPerSecond = 60;
+var size = 2;
+var x=0, y=0;
+
+
+window.onload = function() {
+    canvas = document.getElementById('gameCanvas'); // bind canvas variable to it's HTML element
+    canvasContext = canvas.getContext('2d'); // set the context of the canvas to 2d
+
+    // var framesPerSecond = 60;
+    setInterval(updateAll, 1000/framesPerSecond); // call a (function, x number of times)
+
+    // canvas.addEventListener('mousemove', updateMousePos); // add a mouse move listener to canvas
+    // canvas.addEventListener('click', ballMove);
+
+    // brickReset();
+    // ballReset();
+    // canvasContext.fillStyle = 'black';
+    // canvasContext.fillRect(0,0, canvas.width, canvas.height);
+    // canvasContext.fillStyle = "white";
+    // canvasContext.fillRect(canvas.width/2, canvas.height/2, 2, 2);
+}
+
+function updateAll(){
+    if(x >= canvas.width){
+        x -= 1;
+    } else {
+        x += 1;
+    }
+    console.log(x);
+    canvasContext.fillStyle = 'black';
+    canvasContext.fillRect(0,0, canvas.width, canvas.height);
+    canvasContext.fillStyle = "white";
+    canvasContext.fillRect(canvas.width/2 + x, canvas.height/2 + y, 5, 5);
+}
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
