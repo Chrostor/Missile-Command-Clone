@@ -12,12 +12,15 @@ var canvas, canvasContext;
 var framesPerSecond = 60;
 var size = 2;
 var x=0, y=0;
+var speedX = 5;
+var speedY = 5;
 
 
 window.onload = function() {
     canvas = document.getElementById('gameCanvas'); // bind canvas variable to it's HTML element
     canvasContext = canvas.getContext('2d'); // set the context of the canvas to 2d
-
+    x = canvas.height/2;
+    y = canvas.height/2;
     // var framesPerSecond = 60;
     setInterval(updateAll, 1000/framesPerSecond); // call a (function, x number of times)
 
@@ -26,23 +29,33 @@ window.onload = function() {
 
     // brickReset();
     // ballReset();
-    // canvasContext.fillStyle = 'black';
-    // canvasContext.fillRect(0,0, canvas.width, canvas.height);
-    // canvasContext.fillStyle = "white";
-    // canvasContext.fillRect(canvas.width/2, canvas.height/2, 2, 2);
+ 
 }
 
 function updateAll(){
     if(x >= canvas.width){
-        x -= 1;
+        speedX *= -1;
+        x = (canvas.width) - 1;
+    } else if (x <= 0) {
+        speedX *= -1;
+        x = 1;
     } else {
-        x += 1;
+        x += speedX;
     }
-    console.log(x);
+    if (y >= canvas.height){
+        speedY *= -1;
+        y = canvas.height -1;
+    } else if (y <= 0) {
+        speedY *= -1;
+        y = 1;
+    } else {
+        y += speedY;
+    }
+    //console.log(x);
     canvasContext.fillStyle = 'black';
     canvasContext.fillRect(0,0, canvas.width, canvas.height);
     canvasContext.fillStyle = "white";
-    canvasContext.fillRect(canvas.width/2 + x, canvas.height/2 + y, 5, 5);
+    canvasContext.fillRect(x, y, 5, 5);
 }
 
 
