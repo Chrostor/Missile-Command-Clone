@@ -14,6 +14,7 @@ var size = 2;
 var x=0, y=0;
 var speedX = 0;
 var speedY = 5;
+var shotX, shotY;
 
 
 window.onload = function() {
@@ -25,7 +26,7 @@ window.onload = function() {
     setInterval(updateAll, 1000/framesPerSecond); // call a (function, x number of times)
 
     // canvas.addEventListener('mousemove', updateMousePos); // add a mouse move listener to canvas
-    // canvas.addEventListener('click', ballMove);
+    canvas.addEventListener('click', missileShot);
 
     // brickReset();
     // ballReset();
@@ -58,9 +59,16 @@ function updateAll(){
     canvasContext.fillRect(0,0, canvas.width, canvas.height);
     canvasContext.fillStyle = "white";
     canvasContext.fillRect(x, y, 5, 5);
-    
+    canvasContext.fillStyle = "white";
+    canvasContext.fillRect(shotX - 18, shotY - 18, 20, 20);
+    console.log(shotX + " " + shotY);
 }
 
+function missileShot(evt){
+    shotX = evt.clientX;
+    shotY = evt.clientY;
+    
+}
 
 
 
