@@ -43,7 +43,7 @@ function updateAll(){
     } else {
         x += speedX;
     }
-    if (y >= canvas.height){
+    if (y >= canvas.height - 100){
         //speedY *= -1;
         //y = canvas.height -1;
         y = 0;
@@ -70,6 +70,7 @@ function missileShot(evt){
 
 function drawAll(){
     drawObject(0, 0, canvas.width, canvas.height, 'black'); // draw canvas background
+    drawGround();
     drawObject(x, y, 5, 5, 'white'); // draw falling "missile"
     drawText();
     //drawObject(shotX - 18, shotY - 18, 20, 20,'white'); // draw shot location
@@ -85,7 +86,9 @@ function drawText(){
     canvasContext.fillText('X',shotX - 14, shotY);
 }
 
-
+function drawGround(){
+    drawObject(0, 500, 800, 100, 'sienna');
+}
 
 
 </script>
